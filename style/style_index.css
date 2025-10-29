@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+body {
+   background-color: #0a0840af;
+   margin: 0;
+}
+
+header {
+    background-color: rgba(35, 61, 140, 0.704);
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
