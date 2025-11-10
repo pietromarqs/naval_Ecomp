@@ -1,7 +1,63 @@
 import tkinter as tk
 from tkinter import messagebox
-from matrix import Matrix, Edit_matrix, Navios
+from matriz import Matrix, Edit_matrix, Navios
 
+class MenuPrincipal:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Batalha Naval - Menu Principal")
+        self.tela_inicial()
+
+    def limpar(self):
+        for widget in self.root.winfo_children():
+            widget.destroy()
+
+    def tela_inicial(self):
+        self.limpar()
+        tk.Label(self.root, text="Batalha Naval", font=("Arial", 20)).pack(pady=24)
+
+        tk.Button(self.root, text="Multiplayer local", width=25, height=2,
+                  command=self.iniciar_local).pack(pady=10)
+        tk.Button(self.root, text="Multiplayer online", width=25, height=2,
+                  command=self.menu_online).pack(pady=10)
+
+    def iniciar_local(self):
+        self.limpar()
+        # Crie o jogo local normalmente
+        BatalhaNaval(self.root)
+
+    def menu_online(self):
+        self.limpar()
+        tk.Label(self.root, text="Multiplayer online", font=("Arial", 16)).pack(pady=18)
+        tk.Button(self.root, text="Entrar em jogo existente", width=25, height=2,
+                  command=self.listar_salas).pack(pady=10)
+        tk.Button(self.root, text="Criar sala", width=25, height=2,
+                  command=self.criar_sala).pack(pady=10)
+        tk.Button(self.root, text="Voltar", width=15,
+                  command=self.tela_inicial).pack(pady=15)
+
+    def listar_salas(self):
+        self.limpar()
+        tk.Label(self.root, text="Salas disponíveis:", font=("Arial", 14)).pack(pady=14)
+        # Exemplo ilustrativo, aqui deve vir a lista das salas que seu servidor enviar:
+        tk.Button(self.root, text="Voltar", width=15,
+                  command=self.menu_online).pack(pady=15)
+
+    def entrar_na_sala(self, sala_id):
+        # Coloque aqui a chamada para conectar à sala pelo servidor
+        self.limpar()
+        tk.Label(self.root, text=f"Entrando na sala {sala_id}...", font=("Arial", 16)).pack(pady=60)
+        tk.Button(self.root, text="Voltar", width=15,
+                  command=self.menu_online).pack(pady=15)
+        # Aqui você pode iniciar a lógica para conectar na sala e, depois, iniciar o jogo online
+
+    def criar_sala(self):
+        self.limpar()
+        tk.Label(self.root, text="Encontrando partida...", font=("Arial", 16)).pack(pady=60)
+        tk.Button(self.root, text="Cancelar", width=15,
+                  command=self.menu_online).pack(pady=15)
+        # Aqui você pode iniciar a lógica para criar sala e esperar outro player
+        
 class BatalhaNaval:
     def __init__(self, root):
         self.root = root
@@ -240,5 +296,5 @@ class BatalhaNaval:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    BatalhaNaval(root)
+    app = MenuPrincipal(root)
     root.mainloop()
