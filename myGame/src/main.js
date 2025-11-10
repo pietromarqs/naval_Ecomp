@@ -1,6 +1,7 @@
 import kaplay from "kaplay";
 // import "kaplay/global"; // uncomment if you want to use without the k. prefix
 
+<<<<<<< HEAD
 // simple rpg style walk and talk
 
 kaplay({
@@ -49,7 +50,7 @@ scene("main", (levelIdx) => {
         // any() is a special function that gets called everytime there's a
         // symbole not defined above and is supposed to return what that symbol
         // means
-        
+
     });
 
     // get the player game obj by tag
@@ -73,3 +74,14 @@ scene("win", () => {
 });
 
 go("main", 0);
+=======
+const k = kaplay();
+
+k.loadRoot("./"); // A good idea for Itch.io publishing later
+k.loadSprite("bean", "sprites/bean.png");
+
+k.add([k.pos(120, 80), k.sprite("bean")]);
+
+k.onClick(() => k.addKaboom(k.mousePos()));
+>>>>>>> origin/miguel
+
