@@ -1,6 +1,6 @@
 import socket
 
-HOST = '127.0.0.1'  # endereço do servidor
+HOST = '192.168.8.9'  # endereço do servidor
 PORT = 12345        # mesma porta do servidor
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
